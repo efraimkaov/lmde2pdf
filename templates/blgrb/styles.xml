@@ -1,0 +1,79 @@
+<office:styles>
+  <style:style style:name="i" style:family="paragraph" style:auto-update="true">
+    <style:paragraph-properties fo:margin-top="0in" fo:margin-bottom="0.1in" style:contextual-spacing="false" fo:text-align="center" style:justify-single-word="false"/>
+    <style:text-properties style:font-name="Liberation Serif" fo:font-family="&apos;Liberation Serif&apos;" style:font-style-name="Standard" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="6pt" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="h1" style:family="paragraph" style:auto-update="true">
+    <style:paragraph-properties fo:margin-top="0in" fo:margin-bottom="0.1in" style:contextual-spacing="false" fo:text-align="center" style:justify-single-word="false"/>
+    <style:text-properties style:font-name="Liberation Mono" fo:font-family="&apos;Liberation Mono&apos;" style:font-style-name="Standard" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="28pt" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="h2" style:family="paragraph" style:auto-update="true">
+    <style:paragraph-properties fo:margin-top="0in" fo:margin-bottom="0.1in" style:contextual-spacing="false" fo:text-align="center" style:justify-single-word="false"/>
+    <style:text-properties style:font-name="Liberation Mono" fo:font-family="&apos;Liberation Mono&apos;" style:font-style-name="Standard" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="22pt" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="h3" style:family="paragraph" style:auto-update="true">
+    <style:paragraph-properties fo:margin-top="0in" fo:margin-bottom="0.1in" style:contextual-spacing="false" fo:text-align="center" style:justify-single-word="false"/>
+    <style:text-properties style:font-name="Liberation Mono" fo:font-family="&apos;Liberation Mono&apos;" style:font-style-name="Standard" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="14pt" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="p1" style:family="paragraph" style:auto-update="true">
+    <style:paragraph-properties fo:margin-left="0in" fo:margin-right="0in" fo:margin-top="0in" fo:margin-bottom="0.1in" style:contextual-spacing="false" fo:text-align="justify" style:justify-single-word="false" fo:hyphenation-ladder-count="no-limit" fo:text-indent="0.3in" style:auto-text-indent="false"/>
+    <style:text-properties style:font-name="Liberation Serif" fo:font-family="&apos;Liberation Serif&apos;" style:font-style-name="Standard" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="18pt" fo:language="#lang1#" fo:country="#ctry1#" fo:font-weight="normal" fo:hyphenate="true" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2" loext:hyphenation-no-caps="false"/>
+  </style:style>
+  <style:style style:name="p1b" style:family="paragraph" style:auto-update="true">
+    <style:paragraph-properties fo:margin-left="0in" fo:margin-right="0in" fo:margin-top="0in" fo:margin-bottom="0.1in" style:contextual-spacing="false" fo:text-align="justify" style:justify-single-word="false" fo:hyphenation-ladder-count="no-limit" fo:text-indent="0.3in" style:auto-text-indent="false"/>
+    <style:text-properties style:font-name="Liberation Serif" fo:font-family="&apos;Liberation Serif&apos;" style:font-style-name="Standard" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="18pt" fo:language="#lang2#" fo:country="#ctry2#" fo:font-weight="normal" fo:hyphenate="true" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2" loext:hyphenation-no-caps="false"/>
+  </style:style>
+  <style:style style:name="p1dc" style:family="paragraph" style:parent-style-name="p1" style:auto-update="true">
+    <style:paragraph-properties>
+      <style:drop-cap style:lines="2" style:style-name="tr"/>
+    </style:paragraph-properties>
+  </style:style>
+  <style:style style:name="p1dcb" style:family="paragraph" style:parent-style-name="p1b" style:auto-update="true">
+    <style:paragraph-properties>
+      <style:drop-cap style:lines="2" style:style-name="tr"/>
+    </style:paragraph-properties>
+  </style:style>
+  <style:style style:name="p2" style:family="paragraph" style:auto-update="true">
+    <style:paragraph-properties fo:margin-left="0in" fo:margin-right="0in" fo:margin-top="0in" fo:margin-bottom="0.1in" style:contextual-spacing="false" fo:text-align="justify" style:justify-single-word="false" fo:hyphenation-ladder-count="no-limit" fo:text-indent="0.3in" style:auto-text-indent="false"/>
+    <style:text-properties style:font-name="Liberation Serif" fo:font-family="&apos;Liberation Serif&apos;" style:font-style-name="Standard" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="14pt" fo:language="#lang1#" fo:country="#ctry1#" fo:font-weight="normal" fo:hyphenate="true" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2" loext:hyphenation-no-caps="false"/>
+  </style:style>
+  <style:style style:name="p2b" style:family="paragraph" style:auto-update="true">
+    <style:paragraph-properties fo:margin-left="0in" fo:margin-right="0in" fo:margin-top="0in" fo:margin-bottom="0.1in" style:contextual-spacing="false" fo:text-align="justify" style:justify-single-word="false" fo:hyphenation-ladder-count="no-limit" fo:text-indent="0.3in" style:auto-text-indent="false"/>
+    <style:text-properties style:font-name="Liberation Serif" fo:font-family="&apos;Liberation Serif&apos;" style:font-style-name="Standard" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="14pt" fo:language="#lang2#" fo:country="#ctry2#" fo:font-weight="normal" fo:hyphenate="true" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2" loext:hyphenation-no-caps="false"/>
+  </style:style>
+  <style:style style:name="fn" style:family="paragraph" style:auto-update="true">
+    <style:paragraph-properties fo:margin-left="0in" fo:margin-right="0in" fo:margin-top="0in" fo:margin-bottom="0in" style:contextual-spacing="false" fo:text-align="justify" style:justify-single-word="false" fo:hyphenation-ladder-count="no-limit" fo:text-indent="0.3in" style:auto-text-indent="false"/>
+    <style:text-properties style:font-name="Liberation Serif" fo:font-family="&apos;Liberation Serif&apos;" style:font-style-name="Standard" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="10pt" fo:language="#lang1#" fo:country="#ctry1#" fo:font-weight="normal" fo:hyphenate="true" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2" loext:hyphenation-no-caps="false"/>
+  </style:style>
+  <style:style style:name="hd" style:family="paragraph" style:auto-update="true">
+    <style:paragraph-properties>
+      <style:tab-stops>
+        <style:tab-stop style:position="6.6902in" style:type="right"/>
+        <style:tab-stop style:position="8.2701in"/>
+        <style:tab-stop style:position="14.9598in" style:type="right"/>
+      </style:tab-stops>
+    </style:paragraph-properties>
+    <style:text-properties fo:color="#c9211e" loext:opacity="100%" style:font-name="Liberation Mono" fo:font-family="&apos;Liberation Mono&apos;" style:font-style-name="Standard" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="10pt" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="toch" style:family="paragraph" style:auto-update="true">
+    <style:paragraph-properties fo:margin-top="0in" fo:margin-bottom="0.1in" style:contextual-spacing="false" fo:text-align="center" style:justify-single-word="false"/>
+    <style:text-properties style:font-name="Liberation Mono" fo:font-family="&apos;Liberation Mono&apos;" style:font-style-name="Standard" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="18pt" fo:font-weight="normal"/>
+  </style:style>
+  <style:style style:name="toc" style:family="paragraph" style:auto-update="true">
+    <style:paragraph-properties fo:margin-left="0in" fo:margin-right="0in" fo:margin-top="0in" fo:margin-bottom="0.1in" style:contextual-spacing="false" fo:text-align="justify" style:justify-single-word="false" fo:hyphenation-ladder-count="no-limit" fo:text-indent="0in" style:auto-text-indent="false">
+      <style:tab-stops>
+        <style:tab-stop style:position="6.6929in" style:type="right" style:leader-style="dotted" style:leader-text="."/>
+      </style:tab-stops>
+    </style:paragraph-properties>
+    <style:text-properties style:font-name="Liberation Mono" fo:font-family="&apos;Liberation Mono&apos;" style:font-style-name="Standard" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="14pt" fo:language="#lang1#" fo:country="#ctry1#" fo:font-weight="normal" fo:hyphenate="true" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2" loext:hyphenation-no-caps="false"/>
+  </style:style>
+  <style:style style:name="tr" style:family="text">
+    <style:text-properties fo:color="#ff0000" loext:opacity="100%"/>
+  </style:style>
+  <style:style style:name="tb" style:family="text">
+    <style:text-properties fo:font-weight="bold"/>
+  </style:style>
+  <style:style style:name="ti" style:family="text">
+    <style:text-properties fo:font-style="italic"/>
+  </style:style>
+</office:styles>

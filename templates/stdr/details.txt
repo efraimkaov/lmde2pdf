@@ -1,0 +1,7 @@
+type = regular
+border = no
+front = no
+page size = A4
+header = yes
+footer = no
+page number = yes

@@ -1,0 +1,7 @@
+type = regular |regular, bilingual
+border = yes |yes, no
+front = no |no, "regular template"
+page size = A4 |any (e.g. A4, 5.8 x 8.3 in, 105mm X 148mm)
+header = yes |yes, no
+footer = no |yes, no
+page number = yes |yes, no

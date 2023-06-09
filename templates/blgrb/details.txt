@@ -1,0 +1,7 @@
+type = bilingual
+border = yes
+front = "stdr"
+page size = A4
+header = yes
+footer = no
+page number = yes

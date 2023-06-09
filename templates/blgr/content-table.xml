@@ -1,0 +1,15 @@
+<style:style style:name="Table1" style:family="table" style:master-page-name="fp">
+  <style:table-properties style:width="14.9653in" style:page-number="#pageNumber#" table:align="margins" fo:background-color="transparent"/>
+</style:style>
+<style:style style:name="Table1.A" style:family="table-column">
+  <style:table-column-properties style:column-width="6.6903in" style:rel-column-width="9634*"/>
+</style:style>
+<style:style style:name="Table1.B" style:family="table-column">
+  <style:table-column-properties style:column-width="1.5847in" style:rel-column-width="2282*"/>
+</style:style>
+<style:style style:name="Table1.1" style:family="table-row">
+  <style:table-row-properties fo:background-color="transparent"/>
+</style:style>
+<style:style style:name="Table1.A1" style:family="table-cell">
+  <style:table-cell-properties style:writing-mode="page"/>
+</style:style>
