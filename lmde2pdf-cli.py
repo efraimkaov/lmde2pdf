@@ -80,4 +80,6 @@ elif args.template != None and args.lang1 != None and args.lang2 != None and arg
         print('\033[31m'+'\033[31m'+'Wrong template or arguments for this template!'+'\033[0m'+'\033[0m')
         quit()
 
-lmde2pdf_func(templateTypeRegular, directory, installationDir, lang1, ctry1, lang2, ctry2, templateLayout, template)
+guiCheck = False
+
+lmde2pdf_func(guiCheck, templateTypeRegular, directory, installationDir, lang1, ctry1, lang2, ctry2, templateLayout, template)
