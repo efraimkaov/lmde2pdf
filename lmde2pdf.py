@@ -13,21 +13,12 @@ directory = ''
 def directory_func():
     global directory
     directory = askdirectory(title='Select the full path for the input directory')
-    print(directory)
 
-templateTypeRegular = ''
 installationDir = os.path.dirname(__file__)
 
 with open(installationDir+'/templates/languages-code.txt') as inFile:
     languageLines = [line for line in inFile]
-    language = tuple(sub.replace('\n', '') for sub in languageLines)
-
-lang1 = ''
-ctry1 = ''
-lang2 = ''
-ctry2 = ''
-templateLayout = ''
-template = ''
+    languageTuple = tuple(sub.replace('\n', '') for sub in languageLines)
 
 with open(installationDir+'/templates/template.cfg') as inFile:
     templateLines = [line for line in inFile]
@@ -47,15 +38,28 @@ def template_func(event):
     templateImage_label.grid(row=0, column=4, rowspan=5, sticky='nsew')
 
 def convert_func():
-    template = template_combobox.get().split('-')[1]
-    templateLayout = template
-    templateTypeRegular = template_combobox.get()
-    lang1 = language1_combobox.get().split('-')[0]
-    ctry1 = language1_combobox.get().split('-')[1]
-    lang2 = language2_combobox.get().split('-')[0]
-    ctry2 = language2_combobox.get().split('-')[1]
+    if templateCurrent.get() == '':
+        template = ''
+        templateLayout = ''
+        templateTypeRegular = ''
+    else:
+        template = template_combobox.get().split('-')[1]
+        templateLayout = template
+        templateTypeRegular = template_combobox.get()
+    if language1Current.get() == '':
+        lang1 = ''
+        ctry1 = ''
+    else:
+        lang1 = language1_combobox.get().split('-')[0]
+        ctry1 = language1_combobox.get().split('-')[1]
+    if language2Current.get() == '':
+        lang2 = ''
+        ctry2 = ''
+    else:
+        lang2 = language2_combobox.get().split('-')[0]
+        ctry2 = language2_combobox.get().split('-')[1]
 
-    lmde2pdf_func(templateTypeRegular, directory, installationDir, lang1, ctry1, lang2, ctry2, templateLayout, template)
+    lmde2pdf_func(guiCheck, templateTypeRegular, directory, installationDir, lang1, ctry1, lang2, ctry2, templateLayout, template)
 
 root = tk.Tk()
 
@@ -80,21 +84,23 @@ theme_image = tk.PhotoImage(file='gui/night-light-symbolic.symbolic.png')
 changeTheme_btn = ttk.Button(main_frame, image=theme_image, command=toggle_theme)
 changeTheme_btn.grid(row=0, column=3, sticky='nsew', padx=(0, 10), pady=(0, 10))
 
-template_combobox = ttk.Combobox(main_frame, state='readonly', values=templateTuple)
-#template_combobox.current(0)
+templateCurrent = tk.StringVar()
+template_combobox = ttk.Combobox(main_frame, state='readonly', textvariable=templateCurrent, values=templateTuple)
 template_combobox.grid(row=1, column=0, columnspan=4, sticky='nsew', padx=(0, 10), pady=(0, 10))
 template_combobox.bind('<<ComboboxSelected>>', template_func)
 
 language1_label = ttk.Label(main_frame, text='Language1', font=('Arial', 20))
 language1_label.grid(row=2, column=0, columnspan=2, sticky='nsew', padx=(0, 10), pady=(0, 10))
 
-language1_combobox = ttk.Combobox(main_frame, state='readonly', values=language)
+language1Current = tk.StringVar()
+language1_combobox = ttk.Combobox(main_frame, state='readonly', textvariable=language1Current, values=languageTuple)
 language1_combobox.grid(row=3, column=0, columnspan=2, sticky='nsew', padx=(0, 10), pady=(0, 10))
 
 language2_label = ttk.Label(main_frame, text='Language2', font=('Arial', 20))
 language2_label.grid(row=2, column=2, columnspan=2, sticky='nsew', padx=(0, 10), pady=(0, 10))
 
-language2_combobox = ttk.Combobox(main_frame, state='readonly', values=language)
+language2Current = tk.StringVar()
+language2_combobox = ttk.Combobox(main_frame, state='readonly', textvariable=language2Current, values=languageTuple)
 language2_combobox.grid(row=3, column=2, columnspan=2, sticky='nsew', padx=(0, 10), pady=(0, 10))
 
 open_image = tk.PhotoImage(file='gui/folder-open.png')
