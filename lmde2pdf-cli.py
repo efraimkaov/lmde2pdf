@@ -21,8 +21,11 @@ parser.add_argument('-d', '--directory', help='select the full path for the inpu
 args = parser.parse_args()
 
 template = ''
-language = ''
-country = ''
+templateType = ''
+lang1 = ''
+ctry1 = ''
+lang2 = ''
+ctry2 = ''
 directory = ''
 
 if args.show == True:
@@ -32,11 +35,18 @@ if args.show == True:
     quit()
 
 if args.info != None:
-    templateName = args.info
-    detailsTxt = open(installationDir+'/templates/'+templateName+'/details.txt', 'r')
-    print(detailsTxt.read())
-    detailsTxt.close()
-    quit()
+    template = args.info
+    templateCheckOpen = open(installationDir+'/templates/template.cfg', 'r')
+    templateCheck = templateCheckOpen.read()
+    templateCheckOpen.close()
+    if template+'\n' in templateCheck:
+        detailsTxt = open(installationDir+'/templates/'+template+'/details.txt', 'r')
+        print(detailsTxt.read())
+        detailsTxt.close()
+        quit()
+    else:
+        print('\033[31m'+'Wrong template!'+'\033[0m')
+        quit()
 
 if args.codes == True:
     languagesCode = open(installationDir+'/templates/'+'languages-code.txt', 'r')
@@ -44,42 +54,46 @@ if args.codes == True:
     languagesCode.close()
     quit()
 
-if args.template != None and args.lang1 != None and args.lang2 == None and args.directory != None:
-    templateLayout = args.template
-    langFirst = args.lang1
-    templateType = open(installationDir+'/templates/'+templateLayout+'/details.txt', 'r')
-    templateTypeRegular = templateType.readlines()[0]
-    templateType.close
-    if 'regular' in templateTypeRegular:
-        template = templateLayout
-        directory = args.directory
-        language1 = args.lang1
-        lang1 = language1.split('-')[0]
-        ctry1 = language1.split('-')[1]
-        lang2 = ''
-        ctry2 = ''
+if args.template != None:
+    template = args.template
+    templateCheckOpen = open(installationDir+'/templates/template.cfg', 'r')
+    templateCheck = templateCheckOpen.read()
+    templateCheckOpen.close()
+    if template+'\n' in templateCheck:
+        templateOpen = open(installationDir+'/templates/'+template+'/details.txt', 'r')
+        templateType = templateOpen.readlines()[0]
+        templateOpen.close
     else:
-        print('\033[31m'+'Wrong template or arguments for this template!'+'\033[0m')
+        print('\033[31m'+'Wrong template!'+'\033[0m')
         quit()
-elif args.template != None and args.lang1 != None and args.lang2 != None and args.directory != None:
-    templateLayout = args.template
-    langFirst = args.lang1
-    templateType = open(installationDir+'/templates/'+templateLayout+'/details.txt', 'r')
-    templateTypeRegular = templateType.readlines()[0]
-    templateType.close
-    if 'bilingual' in templateTypeRegular:
-        template = templateLayout
-        directory = args.directory
-        language1 = args.lang1
-        language2 = args.lang2
+
+if args.lang1 != None:
+    language1 = args.lang1
+    language1CheckOpen = open(installationDir+'/templates/'+'languages-code.txt', 'r')
+    language1Check = language1CheckOpen.read()
+    language1CheckOpen.close()
+    if language1+'\n' in language1Check:
         lang1 = language1.split('-')[0]
         ctry1 = language1.split('-')[1]
+    else:
+        print('\033[31m'+'Wrong language1!'+'\033[0m')
+        quit()
+
+if args.lang2 != None:
+    language2 = args.lang2
+    language2CheckOpen = open(installationDir+'/templates/'+'languages-code.txt', 'r')
+    language2Check = language2CheckOpen.read()
+    language2CheckOpen.close()
+    if language2+'\n' in language1Check:
         lang2 = language2.split('-')[0]
         ctry2 = language2.split('-')[1]
     else:
-        print('\033[31m'+'\033[31m'+'Wrong template or arguments for this template!'+'\033[0m'+'\033[0m')
+        print('\033[31m'+'Wrong language2!'+'\033[0m')
         quit()
+
+if args.directory != None:
+    directory = args.directory
 
 guiCheck = False
 
-lmde2pdf_func(guiCheck, templateTypeRegular, directory, installationDir, lang1, ctry1, lang2, ctry2, templateLayout, template)
+lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry1, lang2, ctry2, directory)
