@@ -40,12 +40,10 @@ def template_func(event):
 def convert_func():
     if templateCurrent.get() == '':
         template = ''
-        templateLayout = ''
-        templateTypeRegular = ''
+        templateType = ''
     else:
         template = template_combobox.get().split('-')[1]
-        templateLayout = template
-        templateTypeRegular = template_combobox.get()
+        templateType = template_combobox.get()
     if language1Current.get() == '':
         lang1 = ''
         ctry1 = ''
@@ -59,7 +57,7 @@ def convert_func():
         lang2 = language2_combobox.get().split('-')[0]
         ctry2 = language2_combobox.get().split('-')[1]
 
-    lmde2pdf_func(guiCheck, templateTypeRegular, directory, installationDir, lang1, ctry1, lang2, ctry2, templateLayout, template)
+    lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry1, lang2, ctry2, directory)
 
 root = tk.Tk()
 
