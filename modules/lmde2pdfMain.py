@@ -4,6 +4,7 @@ import os
 import shutil
 from natsort import natsorted
 from pypdf import PdfWriter
+from tkinter import messagebox
 from modules.temporaryDirectory import temporaryDirectoryCreate_func
 from modules.temporaryDirectory import temporaryDirectoryRemove_func
 from modules.lmdeName import lmdeName_func
@@ -11,7 +12,30 @@ from modules.lmdeNameBilingual import lmdeNameBilingual_func
 from modules.pdfSplitting import pdfSplitting_func
 from modules.pdfWatermark import pdfWatermark_func
 
-def lmde2pdf_func(templateTypeRegular, directory, installationDir, lang1, ctry1, lang2, ctry2, templateLayout, template):
+def lmde2pdf_func(guiCheck, templateTypeRegular, directory, installationDir, lang1, ctry1, lang2, ctry2, templateLayout, template):
+    if guiCheck == True and template == '':
+        messagebox.showerror('Error', 'You must select a template!')
+        return
+    elif guiCheck == False and template == '':
+        print('\033[31m'+'You must select a template!'+'\033[0m')
+        quit()
+    else:
+        if guiCheck == True and 'regular' in templateTypeRegular:
+            if guiCheck == True and lang1 == '':
+                messagebox.showerror('Error', 'You must select language1!')
+                return
+        elif guiCheck == False and 'regular' in templateTypeRegular:
+            if guiCheck == False and lang1 == '':
+                print('\033[31m'+'You must select language1!'+'\033[0m')
+                quit()
+
+    if guiCheck == True and '/' not in directory:
+        messagebox.showerror('Error', 'You must select a directory!')
+        return
+    elif guiCheck == False and '/' not in directory:
+        print('\033[31m'+'You must select a directory!'+'\033[0m')
+        quit()
+
     if 'regular' in templateTypeRegular:
 
         # Getting the lmde files from given location
@@ -52,7 +76,7 @@ def lmde2pdf_func(templateTypeRegular, directory, installationDir, lang1, ctry1,
 
         # Generating the final pdf
         pdfWatermark_func(directory, template, installationDir)
-    else:
+    elif 'bilingual' in templateTypeRegular:
 
         # Checking for lmde files in given location
         listDirectory = natsorted(os.listdir(directory))
