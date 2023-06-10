@@ -12,7 +12,8 @@ from modules.lmdeNameBilingual import lmdeNameBilingual_func
 from modules.pdfSplitting import pdfSplitting_func
 from modules.pdfWatermark import pdfWatermark_func
 
-def lmde2pdf_func(guiCheck, templateTypeRegular, directory, installationDir, lang1, ctry1, lang2, ctry2, templateLayout, template):
+def lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry1, lang2, ctry2, directory):
+    # Checking template error
     if guiCheck == True and template == '':
         messagebox.showerror('Error', 'You must select a template!')
         return
@@ -20,15 +21,22 @@ def lmde2pdf_func(guiCheck, templateTypeRegular, directory, installationDir, lan
         print('\033[31m'+'You must select a template!'+'\033[0m')
         quit()
     else:
-        if guiCheck == True and 'regular' in templateTypeRegular:
-            if guiCheck == True and lang1 == '':
-                messagebox.showerror('Error', 'You must select language1!')
+        if 'regular' in templateType or 'bilingual' in templateType:
+            # Checking language1 error
+            if guiCheck == True and 'regular' in templateType:
+                if guiCheck == True and lang1 == '':
+                    messagebox.showerror('Error', 'You must select language1!')
+                    return
+            elif guiCheck == False and 'regular' in templateType:
+                if guiCheck == False and lang1 == '':
+                    print('\033[31m'+'You must select language1!'+'\033[0m')
+                    quit()
+        else:
+            if guiCheck == True:
+                messagebox.showerror('Error', 'Wrong template!')
                 return
-        elif guiCheck == False and 'regular' in templateTypeRegular:
-            if guiCheck == False and lang1 == '':
-                print('\033[31m'+'You must select language1!'+'\033[0m')
-                quit()
 
+    # Checking directory error
     if guiCheck == True and '/' not in directory:
         messagebox.showerror('Error', 'You must select a directory!')
         return
@@ -36,8 +44,7 @@ def lmde2pdf_func(guiCheck, templateTypeRegular, directory, installationDir, lan
         print('\033[31m'+'You must select a directory!'+'\033[0m')
         quit()
 
-    if 'regular' in templateTypeRegular:
-
+    if 'regular' in templateType:
         # Getting the lmde files from given location
         listDirectory = natsorted(os.listdir(directory))
         lenDirectory = len(listDirectory)
@@ -76,8 +83,7 @@ def lmde2pdf_func(guiCheck, templateTypeRegular, directory, installationDir, lan
 
         # Generating the final pdf
         pdfWatermark_func(directory, template, installationDir)
-    elif 'bilingual' in templateTypeRegular:
-
+    elif 'bilingual' in templateType:
         # Checking for lmde files in given location
         listDirectory = natsorted(os.listdir(directory))
         lenDirectory = len(listDirectory)
@@ -219,7 +225,7 @@ def lmde2pdf_func(guiCheck, templateTypeRegular, directory, installationDir, lan
             lmdeFilesLenCount += 1
 
         # Check for front template
-        templateFront = open(installationDir+'/templates/'+templateLayout+'/details.txt', 'r')
+        templateFront = open(installationDir+'/templates/'+template+'/details.txt', 'r')
         templateFrontCheck = templateFront.readlines()[2]
         templateFrontName = template
         templateFront.close
