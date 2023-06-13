@@ -5,7 +5,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.filedialog import askdirectory
 from modules.lmde2pdfMain import lmde2pdf_func
-import sv_ttk
+from ttkthemes import ThemedTk
 
 guiCheck = True
 
@@ -59,28 +59,18 @@ def convert_func():
 
     lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry1, lang2, ctry2, directory)
 
-root = tk.Tk()
+root = ThemedTk(theme='yaru')
 
 root.geometry('800x280')
 root.minsize(800, 280)
 root.maxsize(800, 280)
 root.title('lmde2pdf.py')
 
-def toggle_theme():
-    if sv_ttk.get_theme() == 'dark':
-        sv_ttk.use_light_theme()
-    elif sv_ttk.get_theme() == 'light':
-        sv_ttk.use_dark_theme()
-
 main_frame = ttk.Frame(root)
 main_frame.place(relx=0.5, rely=0.5,anchor='center')
 
 template_label = ttk.Label(main_frame, text='Template', font=('Arial', 20))
 template_label.grid(row=0, column=0, columnspan=4, sticky='nsew', padx=(0, 10), pady=(0, 10))
-
-theme_image = tk.PhotoImage(file='gui/night-light-symbolic.symbolic.png')
-changeTheme_btn = ttk.Button(main_frame, image=theme_image, command=toggle_theme)
-changeTheme_btn.grid(row=0, column=3, sticky='nsew', padx=(0, 10), pady=(0, 10))
 
 templateCurrent = tk.StringVar()
 template_combobox = ttk.Combobox(main_frame, state='readonly', textvariable=templateCurrent, values=templateTuple)
@@ -110,7 +100,5 @@ convert_btn.grid(row=4, column=1, columnspan=3, sticky='nsew', padx=(0, 10))
 
 templateImage_label = ttk.Label(main_frame, width=33)
 templateImage_label.grid(row=0, column=4, rowspan=5, sticky='nsew')
-
-sv_ttk.set_theme('light')
 
 root.mainloop()
