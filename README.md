@@ -2,7 +2,7 @@
 
 ### This application generates pdf files from lmde plain text files based on templates for Liturgical Services Books
 
-![lmde2pdf](https://github.com/efraimkaov/lmde2pdf/assets/63643635/ba6e30d1-4ff6-4380-8a49-82aaf0bdc85e)
+![lmde2pdf](https://github.com/efraimkaov/lmde2pdf/assets/63643635/a81a96b6-b395-43b3-8d3e-78701f0d558f)
 
 ### What are lmde files
 
