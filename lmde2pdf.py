@@ -69,7 +69,7 @@ root.title('lmde2pdf.py')
 main_frame = ttk.Frame(root)
 main_frame.place(relx=0.5, rely=0.5,anchor='center')
 
-template_label = ttk.Label(main_frame, text='Template', font=('Arial', 20))
+template_label = ttk.Label(main_frame, text='Template', font=('Arial', 17))
 template_label.grid(row=0, column=0, columnspan=4, sticky='nsew', padx=(0, 10), pady=(0, 10))
 
 templateCurrent = tk.StringVar()
@@ -77,14 +77,14 @@ template_combobox = ttk.Combobox(main_frame, state='readonly', textvariable=temp
 template_combobox.grid(row=1, column=0, columnspan=4, sticky='nsew', padx=(0, 10), pady=(0, 10))
 template_combobox.bind('<<ComboboxSelected>>', template_func)
 
-language1_label = ttk.Label(main_frame, text='Language1', font=('Arial', 20))
+language1_label = ttk.Label(main_frame, text='Language1', font=('Arial', 17))
 language1_label.grid(row=2, column=0, columnspan=2, sticky='nsew', padx=(0, 10), pady=(0, 10))
 
 language1Current = tk.StringVar()
 language1_combobox = ttk.Combobox(main_frame, state='readonly', textvariable=language1Current, values=languageTuple)
 language1_combobox.grid(row=3, column=0, columnspan=2, sticky='nsew', padx=(0, 10), pady=(0, 10))
 
-language2_label = ttk.Label(main_frame, text='Language2', font=('Arial', 20))
+language2_label = ttk.Label(main_frame, text='Language2', font=('Arial', 17))
 language2_label.grid(row=2, column=2, columnspan=2, sticky='nsew', padx=(0, 10), pady=(0, 10))
 
 language2Current = tk.StringVar()
@@ -98,7 +98,7 @@ open_btn.grid(row=4, column=0, sticky='nsew', padx=(0, 10))
 convert_btn = ttk.Button(main_frame, text='Convert', command=convert_func)
 convert_btn.grid(row=4, column=1, columnspan=3, sticky='nsew', padx=(0, 10))
 
-templateImage_label = ttk.Label(main_frame, width=33)
+templateImage_label = ttk.Label(main_frame, font=('Arial', 17), width=23)
 templateImage_label.grid(row=0, column=4, rowspan=5, sticky='nsew')
 
 root.mainloop()
