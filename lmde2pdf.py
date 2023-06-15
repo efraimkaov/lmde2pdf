@@ -29,7 +29,7 @@ template_image = ''
 def template_func(event):
     global template_image
 
-    templateName = event.widget.get().split('-')[1]
+    templateName = event.widget.get()
 
     templateImage = installationDir+'/templates/'+templateName+'/template.png'
 
@@ -42,8 +42,14 @@ def convert_func():
         template = ''
         templateType = ''
     else:
-        template = template_combobox.get().split('-')[1]
-        templateType = template_combobox.get()
+        template = template_combobox.get()
+        templateCheckOpen = open(installationDir+'/templates/template.cfg', 'r')
+        templateCheck = templateCheckOpen.read()
+        templateCheckOpen.close()
+        if template+'\n' in templateCheck:
+            templateOpen = open(installationDir+'/templates/'+template+'/details.txt', 'r')
+            templateType = templateOpen.readlines()[0]
+            templateOpen.close
     if language1Current.get() == '':
         lang1 = ''
         ctry1 = ''
