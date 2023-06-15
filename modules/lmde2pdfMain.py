@@ -31,6 +31,22 @@ def lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry
                 if guiCheck == False and lang1 == '':
                     print('\033[31m'+'You must select language1!'+'\033[0m')
                     quit()
+            if guiCheck == True and 'bilingual' in templateType:
+                if guiCheck == True and lang1 == '':
+                    messagebox.showerror('Error', 'You must select language1!')
+                    return
+            elif guiCheck == False and 'bilingual' in templateType:
+                if guiCheck == False and lang1 == '':
+                    print('\033[31m'+'You must select language1!'+'\033[0m')
+                    quit()
+            if guiCheck == True and 'bilingual' in templateType:
+                if guiCheck == True and lang2 == '':
+                    messagebox.showerror('Error', 'You must select language2!')
+                    return
+            elif guiCheck == False and 'bilingual' in templateType:
+                if guiCheck == False and lang2 == '':
+                    print('\033[31m'+'You must select language2!'+'\033[0m')
+                    quit()
         else:
             if guiCheck == True:
                 messagebox.showerror('Error', 'Wrong template!')
@@ -59,8 +75,12 @@ def lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry
         lmdeFilesList = list(lmdeFilesString.split('#&#'))
         lmdeFilesLen = len(lmdeFilesList) - 1
         if lmdeFilesLen < 1:
-            print('\033[31m'+'No lmde files found in '+directory+'\033[0m')
-            quit()
+            if guiCheck == True:
+                messagebox.showerror('Error', 'No lmde files found in '+directory)
+                return
+            elif guiCheck == False:
+                print('\033[31m'+'No lmde files found in '+directory+'\033[0m')
+                quit()
 
         # Removing temporary directories
         temporaryDirectoryRemove_func(directory)
