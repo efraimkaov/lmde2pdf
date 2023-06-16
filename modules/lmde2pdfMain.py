@@ -97,7 +97,7 @@ def lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry
             lmdeName = lmdeFilesList[lmdeFilesLenCount]
 
             # Converting lmde files for regualr template to pdf
-            lmdeName_func(directory, lmdeName, lmdeFilesLenCount, installationDir, template, lang1, ctry1, lang2, ctry2)
+            lmdeName_func(guiCheck, directory, lmdeName, lmdeFilesLenCount, installationDir, template, lang1, ctry1, lang2, ctry2)
 
             lmdeFilesLenCount += 1
 
@@ -120,8 +120,12 @@ def lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry
 
         # Restricting lmde files in given location
         if lmdeFilesLen > 0:
-            print('\033[31m'+'For bilingual templates lmde files are only allowed in bilingual1 and bilingual2 subfolders from '+directory+'\033[0m')
-            quit()
+            if guiCheck == True:
+                messagebox.showerror('Error', 'For bilingual templates lmde files are only allowed in bilingual1 and bilingual2 subfolders from '+directory)
+                return
+            elif guiCheck == False:
+                print('\033[31m'+'For bilingual templates lmde files are only allowed in bilingual1 and bilingual2 subfolders from '+directory+'\033[0m')
+                quit()
 
         # Getting the lmde files from bilingual1
         listBilingual1Directory = natsorted(os.listdir(directory+'/bilingual1'))
@@ -153,13 +157,21 @@ def lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry
 
         # Checking if exist lmde files in bilingual1 and bilingual2
         if lmdeFilesBilingual1Len < 1 or lmdeFilesBilingual2Len < 1:
-            print('\033[31m'+'No lmde files found in bilingual1 or bilingual2 subfolders from '+directory+'\033[0m')
-            quit()
+            if guiCheck == True:
+                messagebox.showerror('Error', 'No lmde files found in bilingual1 or bilingual2 subfolders from '+directory)
+                return
+            elif guiCheck == False:
+                print('\033[31m'+'No lmde files found in bilingual1 or bilingual2 subfolders from '+directory+'\033[0m')
+                quit()
 
         # Checking if are the same numbers of lmde file in bilingual1 and bilingual2
         if lmdeFilesBilingual1Len != lmdeFilesBilingual2Len:
-            print('\033[31m'+'The lmde files from bilingual1 and bilingual2 subfolders must be the same amount!'+'\033[0m')
-            quit()
+            if guiCheck == True:
+                messagebox.showerror('Error', 'The lmde files from bilingual1 and bilingual2 subfolders must be the same amount!')
+                return
+            elif guiCheck == False:
+                print('\033[31m'+'The lmde files from bilingual1 and bilingual2 subfolders must be the same amount!'+'\033[0m')
+                quit()
 
         # Comparing lines for lmde files from bilingual1 and bilingual2
         compareCount = 0
@@ -175,8 +187,12 @@ def lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry
             lmdeNameBilingual2Open.close()
 
             if lmdeNameBilingual1Len != lmdeNameBilingual2Len:
-                print('\033[31m'+'The lmde files from bilingual1 and bilingual2 subfolders must have the same amount of lines!'+'\033[0m')
-                quit()
+                if guiCheck == True:
+                    messagebox.showerror('Error', 'The lmde files from bilingual1 and bilingual2 subfolders must have the same amount of lines!')
+                    return
+                elif guiCheck == False:
+                    print('\033[31m'+'The lmde files from bilingual1 and bilingual2 subfolders must have the same amount of lines!'+'\033[0m')
+                    quit()
 
             compareCount += 1
 
@@ -222,8 +238,12 @@ def lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry
         lmdeFilesList = list(lmdeFilesString.split('#&#'))
         lmdeFilesLen = len(lmdeFilesList) - 1
         if lmdeFilesLen < 1:
-            print('\033[31m'+'No combined lmde files found in '+directory+'\033[0m')
-            quit()
+            if guiCheck == True:
+                messagebox.showerror('Error', 'No combined lmde files found in '+directory)
+                return
+            elif guiCheck == False:
+                print('\033[31m'+'No combined lmde files found in '+directory+'\033[0m')
+                quit()
 
         # Removing temporary directories
         temporaryDirectoryRemove_func(directory)
@@ -240,7 +260,7 @@ def lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry
             lmdeName = lmdeFilesList[lmdeFilesLenCount]
 
             # Converting lmde files for bilingual template to pdf
-            lmdeNameBilingual_func(directory, lmdeName, lmdeFilesLenCount, installationDir, template, lang1, ctry1, lang2, ctry2)
+            lmdeNameBilingual_func(guiCheck, directory, lmdeName, lmdeFilesLenCount, installationDir, template, lang1, ctry1, lang2, ctry2)
 
             lmdeFilesLenCount += 1
 
@@ -292,9 +312,14 @@ def lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry
             lenDirectoryCount += 1
         lmdeFilesList = list(lmdeFilesString.split('#&#'))
         lmdeFilesLen = len(lmdeFilesList) - 1
-        if lmdeFilesLen > 0:
-            #print('\033[31m'+'No lmde files found in '+directory+'/front'+'\033[0m')
-            #quit()
+        if lmdeFilesLen < 1:
+            if guiCheck == True:
+                messagebox.showerror('Error', 'No lmde files found in '+directory+'/front')
+                return
+            elif guiCheck == False:
+                print('\033[31m'+'No lmde files found in '+directory+'/front'+'\033[0m')
+                quit()
+        elif lmdeFilesLen > 0:
 
             pageNumber = 0
             odtName = ''
@@ -305,7 +330,7 @@ def lmde2pdf_func(guiCheck, installationDir, template, templateType, lang1, ctry
                 lmdeName = lmdeFilesList[lmdeFilesLenCount]
 
                 # Converting lmde files for regualr template to pdf
-                lmdeName_func(directory, lmdeName, lmdeFilesLenCount, installationDir, template, lang1, ctry1, lang2, ctry2)
+                lmdeName_func(guiCheck, directory, lmdeName, lmdeFilesLenCount, installationDir, template, lang1, ctry1, lang2, ctry2)
 
                 lmdeFilesLenCount += 1
 

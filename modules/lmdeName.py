@@ -2,6 +2,7 @@
 
 import os
 from pypdf import PdfReader
+from tkinter import messagebox
 from modules.manifestXml import manifestXml_func
 from modules.manifestRdf import manifestRdf_func
 from modules.stylesXml import stylesXml_func
@@ -10,7 +11,7 @@ from modules.odtArchive import odtArchiveCreate_func
 from modules.odt2pdf import odt2pdfConvert_func
 from modules.pdfMerging import pdfMerging_func
 
-def lmdeName_func(directory, lmdeName, lmdeFilesLenCount, installationDir, template, lang1, ctry1, lang2, ctry2):
+def lmdeName_func(guiCheck, directory, lmdeName, lmdeFilesLenCount, installationDir, template, lang1, ctry1, lang2, ctry2):
     # Creating variables for leftHeader and rightHeader
     global pageLenMerged
     leftHeader = ''
@@ -26,8 +27,12 @@ def lmdeName_func(directory, lmdeName, lmdeFilesLenCount, installationDir, templ
 
     lmdeFilesLeftHeader = open(directory+'/'+lmdeName+'.lmde', 'r')
     if leftHeaderAllLen < 1:
-        print('\033[31m'+'You must have at least 1 line in '+lmdeName+'.lmde'+'\033[0m')
-        quit()
+        if guiCheck == True:
+            messagebox.showerror('Error', 'You must have at least 1 line in '+lmdeName)
+            return
+        elif guiCheck == False:
+            print('\033[31m'+'You must have at least 1 line in '+lmdeName+'.lmde'+'\033[0m')
+            quit()
     leftHeaderAll = lmdeFilesLeftHeader.readlines()[0]
     leftHeaderVar = leftHeaderAll.split('(')[0]
     if leftHeaderVar == '[lh]' and ')' in leftHeaderAll:
@@ -51,8 +56,12 @@ def lmdeName_func(directory, lmdeName, lmdeFilesLenCount, installationDir, templ
     # Creating variables for defaultStyle, pageNumber and secondPage
     if leftHeaderValidate == True and rightHeaderValidate == True:
         if leftHeaderAllLen < 3:
-            print('\033[31m'+'You must have at least 3 lines in '+lmdeName+'.lmde'+'\033[0m')
-            quit()
+            if guiCheck == True:
+                messagebox.showerror('Error', 'You must have at least 3 lines in '+lmdeName)
+                return
+            elif guiCheck == False:
+                print('\033[31m'+'You must have at least 3 lines in '+lmdeName+'.lmde'+'\033[0m')
+                quit()
         lmdeFilesDefaultStyle = open(directory+'/'+lmdeName+'.lmde', 'r')
         defaultStyleAll = lmdeFilesDefaultStyle.readlines()[2]
         defaultStyleVar = defaultStyleAll.split(' ')[0]
@@ -74,8 +83,12 @@ def lmdeName_func(directory, lmdeName, lmdeFilesLenCount, installationDir, templ
             defaultStyle = 'toch'
         else:
             lmdeFilesDefaultStyle.close()
-            print('\033[31m'+'You have errors in '+lmdeName+'.lmde'+'\033[0m')
-            quit()
+            if guiCheck == True:
+                messagebox.showerror('Error', 'You have errors in '+lmdeName)
+                return
+            elif guiCheck == False:
+                print('\033[31m'+'You have errors in '+lmdeName+'.lmde'+'\033[0m')
+                quit()
         lmdeFilesDefaultStyle.close()
 
         if lmdeFilesLenCount == 0:
@@ -110,8 +123,12 @@ def lmdeName_func(directory, lmdeName, lmdeFilesLenCount, installationDir, templ
             defaultStyle = 'toch'
         else:
             lmdeFilesDefaultStyle.close()
-            print('\033[31m'+'You have errors in '+lmdeName+'.lmde'+'\033[0m')
-            quit()
+            if guiCheck == True:
+                messagebox.showerror('Error', 'You have errors in '+lmdeName)
+                return
+            elif guiCheck == False:
+                print('\033[31m'+'You have errors in '+lmdeName+'.lmde'+'\033[0m')
+                quit()
         lmdeFilesDefaultStyle.close()
 
         if lmdeFilesLenCount == 0:
